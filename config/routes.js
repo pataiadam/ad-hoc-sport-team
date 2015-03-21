@@ -31,11 +31,12 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
+    '/': 'User.login',
+    '/login': 'User.login',
+    '/logout': 'User.logout',
 
-  '/': {
-    view: 'homepage'
-  }
-
+    'GET /user/facebook': 'User.facebook',
+    'GET /user/facebook/callback': 'User.callback'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

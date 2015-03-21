@@ -8,7 +8,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.http.html
  */
-
+var passport = require('passport');
 module.exports.http = {
 
   /****************************************************************************
@@ -21,7 +21,7 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-  // middleware: {
+   middleware: {
 
   /***************************************************************************
   *                                                                          *
@@ -30,23 +30,24 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    // order: [
-    //   'startRequestTimer',
-    //   'cookieParser',
-    //   'session',
-    //   'myRequestLogger',
-    //   'bodyParser',
-    //   'handleBodyParserError',
-    //   'compress',
-    //   'methodOverride',
-    //   'poweredBy',
-    //   '$custom',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    //   '404',
-    //   '500'
-    // ],
+    order: [
+        'startRequestTimer',
+        'cookieParser',
+        'session',
+        'passportLocals',
+        'myRequestLogger',
+        'bodyParser',
+        'handleBodyParserError',
+        'compress',
+        'methodOverride',
+        'poweredBy',
+        '$custom',
+        'router',
+        'www',
+        'favicon',
+        '404',
+        '500'
+    ],
 
   /****************************************************************************
   *                                                                           *
@@ -54,13 +55,22 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-    // myRequestLogger: function (req, res, next) {
-    //     console.log("Requested :: ", req.method, req.url);
-    //     return next();
-    // }
+     myRequestLogger: function (req, res, next) {
+         console.log("Requested :: ", req.method, req.url);
+         return next();
+     },
+
+      passportLocals:   function(req, res, next) {
+          passport.initialize()(req, res, function () {
+              passport.session()(req, res, function () {
+                  next();
+              });
+          })
+      }
 
 
-  /***************************************************************************
+
+      /***************************************************************************
   *                                                                          *
   * The body parser that will handle incoming multipart HTTP requests. By    *
   * default as of v0.10, Sails uses                                          *
@@ -71,7 +81,7 @@ module.exports.http = {
 
     // bodyParser: require('skipper')
 
-  // },
+   }
 
   /***************************************************************************
   *                                                                          *
