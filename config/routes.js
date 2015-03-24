@@ -31,7 +31,8 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-    '/': 'User.login',
+    '/': 'Home.index',
+    '/howitworks': 'Home.howItWorks',
     '/login': 'User.login',
     '/logout': 'User.logout',
 

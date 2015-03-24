@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ad-hoc Sport</title>
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Pie Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <!--Animation-->
+    <script src="js/wow.min.js"></script>
+    <link href="css/animate.css" rel='stylesheet' type='text/css' />
+    <script>
+        new WOW().init();
+    </script>
+</head>
+<body>
+<div class="header" id="home">
+    <div class="container">
+        <div class="logo">
+            <a href="#"><img src="images/logo.png" alt="" /></a>
+        </div>
+        <span class="menu"></span>
+        <div class="top-menu">
+            <ul>
+                <li><a class="active scroll hvr-shutter-out-horizontal" href="/home">Home</a></li>
+                <li><a class="scroll hvr-shutter-out-horizontal" href="/howitworks">How it works</a></li>
+                {{#if user}}
+                    <li><a class="scroll hvr-shutter-out-horizontal" href="/logout">Logout</a></li>
+                {{else}}
+                    <li><a class="scroll hvr-shutter-out-horizontal" href="/login">Login</a></li>
+                {{/if}}
+            </ul>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+u_{{user.facebookId}}
+{{{body}}}
+<div class="footer">
+    <div class="container">
+        <div class="copyright text-center">
+            <p>Copyright &copy; 2015 All rights reserved | Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

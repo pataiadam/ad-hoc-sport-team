@@ -42,7 +42,6 @@ passport.use(new FacebookStrategy({
     }, function (accessToken, refreshToken, profile, done) {
         findByFacebookId(profile.id, function (err, user) {
             if (!user) {
-                sails.log.debug(11);
                 User.create({
                     facebookId: profile.id
                 }).exec(function (err, user) {

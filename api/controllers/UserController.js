@@ -14,7 +14,7 @@ module.exports = {
     logout: function (req, res){
         req.session.authenticated = false;
         req.session.user = null;
-        res.redirect('user/login');
+        res.redirect('/home');
     },
 
     facebook: function (req, res, next) {
@@ -23,11 +23,11 @@ module.exports = {
                 req.logIn(user, function (err) {
                     if(err) {
                         sails.log.debug(err);
-                        res.redirect('user/login');
+                        res.redirect('/login');
                     } else {
                         req.session.authenticated = true;
                         req.session.user = user;
-                        res.redirect('/dashboard');
+                        res.redirect('/home');
                     }
                 });
             })(req, res, next);
