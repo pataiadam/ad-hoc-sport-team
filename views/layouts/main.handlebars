@@ -2,46 +2,54 @@
 <html>
 <head>
     <title>Ad-hoc Sport</title>
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <!-- Custom Theme files -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- Custom Theme files -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Pie Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!--webfont-->
+
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="/css/bootstrap-social.css" rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <!-- Owl Stylesheets -->
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
-    <!--Animation-->
-    <script src="js/wow.min.js"></script>
-    <link href="css/animate.css" rel='stylesheet' type='text/css' />
-    <script>
-        new WOW().init();
-    </script>
+    <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+    <link href="/css/material.css" rel='stylesheet' type='text/css' />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="/js/material.js"></script>
+
 </head>
 <body>
 <div class="header" id="home">
     <div class="container">
         <div class="logo">
-            <a href="#"><img src="images/logo.png" alt="" /></a>
+            <a href="#"><img src="/images/logo.svg" width="50px" alt="" /></a>
         </div>
         <span class="menu"></span>
         <div class="top-menu">
             <ul>
-                <li><a class="active scroll hvr-shutter-out-horizontal" href="/home">Home</a></li>
+                <li><a class="scroll hvr-shutter-out-horizontal" href="/home">Home</a></li>
                 <li><a class="scroll hvr-shutter-out-horizontal" href="/howitworks">How it works</a></li>
                 {{#if user}}
-                    <li><a class="scroll hvr-shutter-out-horizontal" href="/logout">Logout</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">{{user.name}} <img src="//graph.facebook.com/{{user.facebookId}}/picture" width="25px">
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/user/update">Profile settings</a></li>
+                                <li><a  href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 {{else}}
-                    <li><a class="scroll hvr-shutter-out-horizontal" href="/login">Login</a></li>
+                    <li>
+                        <a href="/user/facebook" class="btn-social btn-facebook">
+                            <i class="fa fa-facebook"></i> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Sing in
+                        </a>
+                    </li>
                 {{/if}}
             </ul>
         </div>
@@ -49,7 +57,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"></div>
     </div>
 </div>
-u_{{user.facebookId}}
 {{{body}}}
 <div class="footer">
     <div class="container">
@@ -58,6 +65,18 @@ u_{{user.facebookId}}
         </div>
     </div>
 </div>
-
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(sendPosition);
+        } else {
+            alert('Cannot determine the position :(');
+        }
+    }
+    function sendPosition(position) {
+        console.log(position);
+        window.location = "/home/index?lat="+position.coords.latitude+"&lon="+position.coords.longitude;
+    }
+</script>
 </body>
 </html>

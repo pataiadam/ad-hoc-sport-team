@@ -1,0 +1,110 @@
+body {
+  background: #ffffff;
+}
+
+.card-container {
+  margin: 30px auto;
+  width: 500px;
+}
+
+.screen {
+  background: #ffffff;
+  height: 200px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  -webkit-padding-start: 0;
+}
+.screen .toolbar {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #3f51b5;
+  padding: 1.5em 2em;
+  overflow: hidden;
+  line-height: 0;
+  list-style: none;
+}
+.screen .toolbar .toggle:hover {
+  cursor: pointer;
+}
+.screen .toolbar .toggle:after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  left: 35px;
+  top: 35px;
+  opacity: 1;
+  border-radius: 100%;
+  background-color: #fff;
+  display: block;
+}
+.screen .toolbar .toggle.anim:after {
+  transition: all 400ms cubic-bezier(0, 0.7, 0.5, 1);
+  width: 70px;
+  height: 70px;
+  left: 16px;
+  top: 2px;
+  opacity: 0;
+}
+.screen .toolbar .toggle .arrow,
+.screen .toolbar .toggle .menu {
+  line-height: 0;
+  float: left;
+}
+.screen .toolbar .toggle .arrow img,
+.screen .toolbar .toggle .menu img {
+  height: 25px;
+  transition: opacity .3s ease, transform .5s ease;
+  opacity: 1;
+}
+.screen .toolbar .toggle .arrow .out,
+.screen .toolbar .toggle .menu .out {
+  opacity: 0;
+  transition: opacity .3s ease, transform .5s ease;
+  transform: rotate(360deg);
+  transform-origin: center center;
+}
+.screen .toolbar .heart,
+.screen .toolbar .add,
+.screen .toolbar .search,
+.screen .toolbar .download,
+.screen .toolbar .trash {
+  float: right;
+  line-height: 0;
+  padding-left: 1em;
+  position: relative;
+}
+.screen .toolbar .heart img,
+.screen .toolbar .add img,
+.screen .toolbar .search img,
+.screen .toolbar .download img,
+.screen .toolbar .trash img {
+  height: 25px;
+  transition: all .5s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+.screen .toolbar .heart .hide,
+.screen .toolbar .add .hide,
+.screen .toolbar .search .hide,
+.screen .toolbar .download .hide,
+.screen .toolbar .trash .hide {
+  transition: all .5s ease;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center center;
+}
+.screen .toolbar .icons-pull-right {
+  position: absolute;
+  right: 0;
+  padding-right: 2em;
+}
+.screen .toolbar .icons-pull-left {
+  position: absolute;
+  left: 0;
+  padding-left: 2em;
+}
+.screen .toolbar.no-trans .menu,
+.screen .toolbar.no-trans .arrow {
+  transition: none;
+}

@@ -35,6 +35,10 @@ module.exports = {
 
     callback: function (req, res, next) {
         return next();
+    },
+
+    update: function (req, res) {
+        res.view();
     }
 };
 

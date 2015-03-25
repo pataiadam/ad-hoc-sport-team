@@ -2,24 +2,43 @@
     <div class="container">
         <div class="banner-info text-center">
             <h2>Nearest events</h2>
-            <p>Blah, blah, pleas login, blah blah</p>
-           <!-- <div class="details">
-                <form>
-                    <li>
-                        <input type="text" class="text" value="Full Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Full Name';}">
-                        <a class="name" href="#"></a>
-                    </li>
-                    <li>
-                        <input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
-                        <a class="mail" href="#"></a>
-                    </li>
-                    <li>
-                        <input type="text" class="text" value="Phone Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone Number';}">
-                        <a class="num" href="#"></a>
-                    </li>
-                    <input type="submit" value="Request a quote">
-                </form>
-            </div> -->
+            {{#if user}}
+                <div class="details">
+                    <form method="POST" role="form">
+                        <li>
+                            <input type="text" class="text" name="sport" value="Sport" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'sport';}">
+                        </li>
+                        <li>
+                            <input type="text" class="text" name="description" value="Description" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'description';}">
+                        </li>
+                        <input type="hidden" name="latitude" value="{{pos.lat}}">
+                        <input type="hidden" name="longitude" value="{{pos.lon}}">
+                        <input type="hidden" name="creator" value="{{user.id}}">
+                        <input type="submit" value="Post event">
+                    </form>
+                </div>
+            {{else}}
+                <p>To push an event, please sign in with Facebook</p>
+            {{/if}}
+            {{#unless events}}
+                <button class="btn btn-default" onclick="getLocation()">Get current position</button>
+                <button class="btn btn-default">Set position</button>
+            {{/unless}}
+            {{#each events}}
+                <div class="card-container">
+                    <ul class="screen">
+                        <li class="toolbar">
+                            <div class="heart">
+                                <img src="http://i.imgur.com/t1QhRpr.png">
+                            </div>
+                        </li>
+                        <h1>{{this.sport}}</h1> <br>
+                        Created by:  <img src="//graph.facebook.com/{{this.creator.facebookId}}/picture" width="25px"> {{this.creator.name}} <br>
+                        Lon: {{this.longitude}}<br>
+                        Lat: {{this.latitude}}
+                    </ul>
+                </div>
+            {{/each}}
 
         </div>
     </div>

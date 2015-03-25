@@ -43,7 +43,9 @@ passport.use(new FacebookStrategy({
         findByFacebookId(profile.id, function (err, user) {
             if (!user) {
                 User.create({
-                    facebookId: profile.id
+                    facebookId: profile.id,
+                    name: profile.displayName,
+                    email: profile._json.email
                 }).exec(function (err, user) {
                     if (user) {
                         return done(null, user, {
