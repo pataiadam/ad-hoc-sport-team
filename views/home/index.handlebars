@@ -2,9 +2,18 @@
     <div class="container">
         <div class="banner-info text-center">
             <h2>Nearest events</h2>
+            {{#unless events}}
+                <button class="btn btn-default" onclick="getLocation()">Get nearest event (you must allow location sharing)</button>
+            {{/unless}}
+
+            {{#unless user}}
+                <p>To push an event, please sign in with Facebook</p>
+            {{/unless}}
+
             {{#if user}}
+                {{#if events}}
                 <div class="details">
-                    <form method="POST" role="form">
+                    <form method="POST" action="/event/create" role="form">
                         <li>
                             <input type="text" class="text" name="sport" value="Sport" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'sport';}">
                         </li>
@@ -17,25 +26,25 @@
                         <input type="submit" value="Post event">
                     </form>
                 </div>
-            {{else}}
-                <p>To push an event, please sign in with Facebook</p>
+                {{else}}
+                    <p>To push an event, please share your location</p>
+                {{/if}}
             {{/if}}
-            {{#unless events}}
-                <button class="btn btn-default" onclick="getLocation()">Get current position</button>
-                <button class="btn btn-default">Set position</button>
-            {{/unless}}
+
             {{#each events}}
                 <div class="card-container">
                     <ul class="screen">
                         <li class="toolbar">
+                            <div style="float: left">
+                                <h1>{{this.sport}}</h1>
+                            </div>
                             <div class="heart">
                                 <img src="http://i.imgur.com/t1QhRpr.png">
                             </div>
                         </li>
-                        <h1>{{this.sport}}</h1> <br>
-                        Created by:  <img src="//graph.facebook.com/{{this.creator.facebookId}}/picture" width="25px"> {{this.creator.name}} <br>
-                        Lon: {{this.longitude}}<br>
-                        Lat: {{this.latitude}}
+                        <br>
+                        {{this.description}}<br><br>
+                        <div style="float: right">Created by:  <img src="//graph.facebook.com/{{this.creator.facebookId}}/picture" width="25px"> {{this.creator.name}}</div>
                     </ul>
                 </div>
             {{/each}}
