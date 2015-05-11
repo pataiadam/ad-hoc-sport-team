@@ -1,0 +1,31 @@
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+    function initialize() {
+        var mapProp = {
+            center:new google.maps.LatLng(51.508742,-0.120850),
+            zoom:5,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<div class="banner">
+    <div class="container">
+        <div class="banner-info text-center">
+            <div class="details">
+                <form method="POST" action="/event/update" role="form">
+                    <li>
+                        Sport: <input type="text" class="text" name="sport" value="{{this.sport}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.sport}}';}">
+                    </li>
+                    <li>
+                       Description: <input type="text" class="text" name="description" value="{{this.description}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.description}}';}">
+                    </li>
+                    <input type="hidden" class="text" name="description" value="{{this.id}}">
+                    <div id="googleMap" style="width:500px;height:380px;"></div>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
