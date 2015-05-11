@@ -1,1 +1,17 @@
-UPDATE
+<div class="banner">
+    <div class="container">
+        <div class="banner-info text-center">
+            <div class="details">
+                <form method="POST" action="/user/update" role="form">
+                    <li>
+                        Email: <input type="text" class="text" name="email" value="{{this.email}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.email}}';}">
+                    </li>
+                    <li>
+                       Push: <input type="text" class="text" name="pushbullet" value="{{this.pushbullet}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.pushbullet}}';}">
+                    </li>
+                     <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

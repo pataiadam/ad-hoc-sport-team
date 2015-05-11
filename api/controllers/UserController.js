@@ -38,7 +38,35 @@ module.exports = {
     },
 
     update: function (req, res) {
-        res.view();
+        if(req.method==='GET'){
+            if(req.session.user===undefined){
+                return res.redirect('/login');
+            }
+            User.findOne(req.session.user).exec(function(err, user){
+                if(err) {
+                    sails.log.debug(err);
+                    return res.redirect('/login');
+                }
+                return res.view(user);
+            });
+        }else{
+            sails.log.debug(req.session.user);
+            var up = {
+                email: req.body.email,
+                pushbullet: req.body.pushbullet,
+                name: req.session.user.name,
+                facebookId: req.session.user.facebookId,
+                id: req.session.user.id
+            };
+            User.update(req.session.user,up).exec(function(err, user){
+                if(err) {
+                    sails.log.debug(err);
+                    return res.redirect('/login');
+                }
+                req.session.user=user[0];
+                return res.redirect('/user/update');
+            });
+        }
     }
 };
 

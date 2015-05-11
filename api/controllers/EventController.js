@@ -14,14 +14,28 @@ module.exports = {
     },
 
     show: function(req, res){
-
+        Event.findOne(req.query.id).exec(function (err, event) {
+            if (!!err) {
+                sails.log.error(err);
+                return res.redirect('/');
+            }
+            var ic=false;
+            if(req.session.user!==undefined){
+                ic= event.creator===req.session.user.id;
+            }
+            res.view({event: event, isCreator:ic});
+        });
     },
 
     update: function(req, res){
 
     },
 
-    destroy: function(){
+    destroy: function(req, res){
+
+    },
+
+    join: function(req, res){
 
     }
 };

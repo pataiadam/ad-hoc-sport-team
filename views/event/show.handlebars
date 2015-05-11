@@ -1,0 +1,25 @@
+<div class="banner">
+    <div class="container">
+        <div class="banner-info text-center">
+            <div class="card-container">
+                <ul class="screen">
+                    <li class="toolbar">
+                        <div style="float: left">
+                            <h1>{{event.sport}}</h1>
+                        </div>
+                        {{#if isCreator}}
+                        <div class="heart">
+                            <a href="/event/destroy?id={{this.id}}"><img src="/images/del_icon.png"></a>
+                        </div>
+                        {{/if}}
+                    </li>
+                    <br>
+                    {{event.description}}<br><br>
+                    <div style="float: right">Created by:  <img src="//graph.facebook.com/{{event.creator.facebookId}}/picture" width="25px"> {{event.creator.name}}</div>
+                </ul>
+            </div>
+            {{#if isCreator}} <a class="btn btn-default" href="/event/update?id={{this.id}}">Edit</a>{{/if}}
+            {{#unless isCreator}}<a class="btn btn-default" href="/event/join?id={{this.id}}">Join</a>{{/unless}}
+        </div>
+    </div>
+</div>
