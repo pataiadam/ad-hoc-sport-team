@@ -9,17 +9,18 @@
                         </div>
                         {{#if isCreator}}
                         <div class="heart">
-                            <a href="/event/destroy?id={{this.id}}"><img src="/images/del_icon.png"></a>
+                            <a href="/event/destroy?id={{event.id}}"><img src="/images/del_icon.png"></a>
                         </div>
                         {{/if}}
                     </li>
                     <br>
                     {{event.description}}<br><br>
+                    Members count: {{memberCount}}
                     <div style="float: right">Created by:  <img src="//graph.facebook.com/{{event.creator.facebookId}}/picture" width="25px"> {{event.creator.name}}</div>
                 </ul>
             </div>
-            {{#if isCreator}} <a class="btn btn-default" href="/event/update?id={{this.id}}">Edit</a>{{/if}}
-            {{#unless isCreator}}<a class="btn btn-default" href="/event/join?id={{this.id}}">Join</a>{{/unless}}
+            {{#if isCreator}} <a class="btn btn-default" href="/event/update?id={{event.id}}">Edit</a>{{/if}}
+            {{#unless isCreator}}<a class="btn btn-default" href="/event/join?id={{event.id}}">Join</a>{{/unless}}
         </div>
     </div>
 </div>

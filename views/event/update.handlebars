@@ -19,9 +19,9 @@
                         Sport: <input type="text" class="text" name="sport" value="{{this.sport}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.sport}}';}">
                     </li>
                     <li>
-                       Description: <input type="text" class="text" name="description" value="{{this.description}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.description}}';}">
+                       Desc: <input type="text" class="text" name="description" value="{{this.description}}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '{{this.description}}';}">
                     </li>
-                    <input type="hidden" class="text" name="description" value="{{this.id}}">
+                    <input type="hidden" class="text" name="id" value="{{this.id}}">
                     <div id="googleMap" style="width:500px;height:380px;"></div>
                     <input type="submit" value="Save">
                 </form>
